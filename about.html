@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Your Name</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/about.css" />
+  </head>
+  <body>
+
+    <!-- ─── PAGE TRANSITION ────────────────────────── -->
+    <div id="page-transition"></div>
+
+    <!-- ─── CURSOR ─────────────────────────────────── -->
+    <div id="cursor">
+      <div id="cursor__dot"></div>
+      <div id="cursor__ring"></div>
+    </div>
+
+    <!-- ─── NAVIGATION ─────────────────────────────── -->
+    <nav id="nav">
+      <a href="/" class="nav__logo" data-link>
+        <span>Your Name</span>
+      </a>
+      <div class="nav__links">
+        <a href="/about.html" class="nav__link is-active" data-link>About</a>
+        <a href="mailto:you@email.com" class="nav__link">Contact</a>
+      </div>
+    </nav>
+
+    <!-- ─── ABOUT HERO ──────────────────────────────── -->
+    <header id="about-hero">
+      <div class="about-hero__eyebrow">
+        <span class="reveal-line">About</span>
+      </div>
+      <h1 class="about-hero__title">
+        <span class="reveal-line">Designer &amp;</span>
+        <span class="reveal-line">Art Director</span>
+        <span class="reveal-line">based in</span>
+        <span class="reveal-line accent">Your City</span>
+      </h1>
+    </header>
+
+    <!-- ─── ABOUT BODY ───────────────────────────────── -->
+    <section id="about-body">
+      <div class="about-grid">
+
+        <div class="about-portrait reveal-up">
+          <img src="/assets/images/portrait.jpg" alt="Portrait" />
+        </div>
+
+        <div class="about-text">
+          <p class="about-bio reveal-up">
+            I'm an independent interactive designer and art director
+            specialising in building art direction for immersive and
+            interactive web experiences. I work at the intersection
+            of design, technology and storytelling.
+          </p>
+
+          <p class="about-bio reveal-up">
+            Previously at [Studio / Agency]. Currently open to
+            select freelance projects and collaborations.
+          </p>
+
+          <div class="about-services reveal-up">
+            <h2 class="about-section-label">Services</h2>
+            <ul class="about-list">
+              <li>Art Direction</li>
+              <li>Interactive Design</li>
+              <li>Brand Identity</li>
+              <li>Web Experience</li>
+              <li>Motion & Animation</li>
+              <li>Creative Direction</li>
+            </ul>
+          </div>
+
+          <div class="about-clients reveal-up">
+            <h2 class="about-section-label">Selected Clients</h2>
+            <ul class="about-list">
+              <li>Client One</li>
+              <li>Client Two</li>
+              <li>Client Three</li>
+              <li>Client Four</li>
+              <li>Client Five</li>
+              <li>Client Six</li>
+            </ul>
+          </div>
+
+          <div class="about-contact reveal-up">
+            <h2 class="about-section-label">Contact</h2>
+            <a href="mailto:you@email.com" class="about-email">
+              you@email.com
+            </a>
+          </div>
+
+          <div class="about-social reveal-up">
+            <h2 class="about-section-label">Social</h2>
+            <div class="about-social-links">
+              <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://linkedin.com"  target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://twitter.com"   target="_blank" rel="noopener">Twitter</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ─────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer__left">
+        <span>© 2025 Your Name</span>
+      </div>
+      <div class="footer__right">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com"  target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com"   target="_blank" rel="noopener">Twitter</a>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/js/about.js"></script>
+  </body>
+</html>

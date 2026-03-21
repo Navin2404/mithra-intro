@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project — Your Name</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/project.css" />
+  </head>
+  <body>
+
+    <!-- ─── PAGE TRANSITION ────────────────────────── -->
+    <div id="page-transition"></div>
+
+    <!-- ─── CURSOR ─────────────────────────────────── -->
+    <div id="cursor">
+      <div id="cursor__dot"></div>
+      <div id="cursor__ring"></div>
+    </div>
+
+    <!-- ─── NAVIGATION ─────────────────────────────── -->
+    <nav id="nav">
+      <a href="/" class="nav__logo" data-link>
+        <span>Your Name</span>
+      </a>
+      <div class="nav__links">
+        <a href="/about.html" class="nav__link" data-link>About</a>
+        <a href="mailto:you@email.com" class="nav__link">Contact</a>
+      </div>
+    </nav>
+
+    <!-- ─── PROJECT HERO ────────────────────────────── -->
+    <header id="project-hero">
+      <div class="project-hero__meta">
+        <span class="project-hero__index reveal-line" id="p-index">01</span>
+        <span class="project-hero__tags reveal-line"  id="p-tags">Brand · Digital</span>
+      </div>
+      <h1 class="project-hero__title">
+        <span class="reveal-line" id="p-title">Project Title</span>
+      </h1>
+      <div class="project-hero__image reveal-up" id="p-hero-img">
+        <img id="p-hero-src" src="" alt="Project hero" />
+      </div>
+    </header>
+
+    <!-- ─── PROJECT BODY ─────────────────────────────── -->
+    <section id="project-body">
+
+      <div class="project-intro reveal-up">
+        <div class="project-intro__label">Overview</div>
+        <p class="project-intro__text" id="p-overview">
+          Project description goes here.
+        </p>
+      </div>
+
+      <div class="project-details reveal-up">
+        <div class="project-detail">
+          <span class="project-detail__label">Client</span>
+          <span class="project-detail__value" id="p-client">Client Name</span>
+        </div>
+        <div class="project-detail">
+          <span class="project-detail__label">Year</span>
+          <span class="project-detail__value" id="p-year">2024</span>
+        </div>
+        <div class="project-detail">
+          <span class="project-detail__label">Role</span>
+          <span class="project-detail__value" id="p-role">Art Direction · Design</span>
+        </div>
+      </div>
+
+      <div class="project-gallery" id="p-gallery"></div>
+
+    </section>
+
+    <!-- ─── NEXT PROJECT ─────────────────────────────── -->
+    <section id="next-project">
+      <a href="#" class="next-project__link" id="p-next" data-link>
+        <span class="next-project__label">Next Project</span>
+        <span class="next-project__title" id="p-next-title">Next Project Title</span>
+        <div class="next-project__arrow"><span>→</span></div>
+      </a>
+    </section>
+
+    <!-- ─── FOOTER ─────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer__left">
+        <span>© 2025 Your Name</span>
+      </div>
+      <div class="footer__right">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com"  target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com"   target="_blank" rel="noopener">Twitter</a>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/js/project.js"></script>
+  </body>
+</html>
