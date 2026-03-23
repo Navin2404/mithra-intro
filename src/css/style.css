@@ -6,21 +6,18 @@
 
 /* ─── TOKENS ───────────────────────────────────────── */
 :root {
-  --black:     #000;
-  --white:     #fff;
+  --black:     #0a0a0a;
+  --white:     #ffffff;
   --grey:      #888;
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-io:   cubic-bezier(0.65, 0, 0.35, 1);
-
-  /* Strip item size */
-  --item-w:  240px;
-  --item-h:  340px;
-  --gap:     12px;
+  --item-w:    240px;
+  --item-h:    320px;
+  --gap:       10px;
 }
 
-/* ─── RESET / BASE ─────────────────────────────────── */
+/* ─── RESET ────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html {
   background: var(--black);
   color: var(--white);
@@ -28,8 +25,7 @@ html {
   -webkit-font-smoothing: antialiased;
   cursor: none;
 }
-
-body { min-height: 100vh; }
+body { min-height: 100vh; overflow-x: hidden; }
 a    { text-decoration: none; color: inherit; }
 img  { display: block; max-width: 100%; }
 
@@ -40,33 +36,33 @@ img  { display: block; max-width: 100%; }
   z-index: 9999;
   background: var(--black);
   display: flex;
-  align-items: flex-end;
-  padding: 2rem 3rem;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
 }
 
 #loader__bar {
   position: absolute;
   top: 0; left: 0;
-  height: 2px;
+  height: 1px;
   width: 0%;
-  background: var(--white);
-  transition: width 0.1s linear;
+  background: rgba(255,255,255,0.3);
 }
 
 #loader__count {
-  font-size: clamp(3rem, 9vw, 9rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 300;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.05em;
   color: var(--white);
   opacity: 0;
   line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
 }
 
 #loader__percent {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  vertical-align: super;
-  margin-left: 3px;
+  font-size: 0.7em;
   opacity: 0.5;
 }
 
@@ -95,14 +91,15 @@ img  { display: block; max-width: 100%; }
   border-radius: 50%;
   transform: translate(-50%,-50%);
   opacity: .5;
-  transition: width .4s var(--ease-expo), height .4s var(--ease-expo), opacity .3s ease;
+  transition: width .4s var(--ease-expo),
+              height .4s var(--ease-expo),
+              opacity .3s ease;
 }
 
 body:has(a:hover) #cursor__dot,
 body:has(button:hover) #cursor__dot { width: 0; height: 0; }
-
 body:has(a:hover) #cursor__ring,
-body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
+body:has(button:hover) #cursor__ring { width: 70px; height: 70px; opacity: .8; }
 
 /* ─── NAV ──────────────────────────────────────────── */
 #nav {
@@ -110,17 +107,18 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 500;
-  height: 60px;
+  z-index: 600;
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 2rem;
+  opacity: 0;
 }
 
 .nav__link {
-  font-size: .85rem;
-  letter-spacing: .04em;
-  color: rgba(255,255,255,.45);
+  font-size: .82rem;
+  letter-spacing: .05em;
+  color: rgba(255,255,255,.4);
   font-weight: 400;
   transition: color .3s ease;
 }
@@ -128,20 +126,16 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
 .nav__link--active,
 .nav__link:hover { color: var(--white); font-weight: 500; }
 
-/* ─── SCROLL CONTAINER ─────────────────────────────── */
-#scroll-container {
-  height: var(--scroll-height, 500vh);
-}
-
-/* ─── STICKY WRAP ──────────────────────────────────── */
-#sticky-wrap {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+/* ─── MAIN STAGE ───────────────────────────────────── */
+/* overflow-x: hidden on html prevents scroll bar flash */
+#stage {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 
 /* ─── STRIP ────────────────────────────────────────── */
@@ -152,10 +146,10 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
   gap: var(--gap);
   padding: 0 8vw;
   will-change: transform;
-  transition: transform 0s; /* JS drives this */
+  position: relative;
 }
 
-/* ─── ITEM — default small state ───────────────────── */
+/* ─── ITEM ─────────────────────────────────────────── */
 .item {
   position: relative;
   flex-shrink: 0;
@@ -163,11 +157,14 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
   height: var(--item-h);
   cursor: pointer;
   overflow: hidden;
+  border-radius: 3px;
+  /* Transitions for expand/collapse */
   transition:
-    width  .9s var(--ease-expo),
-    height .9s var(--ease-expo),
-    border-radius .9s var(--ease-expo);
-  border-radius: 2px;
+    width  1.0s var(--ease-expo),
+    height 1.0s var(--ease-expo),
+    border-radius 1.0s var(--ease-expo),
+    opacity 0.6s ease;
+  will-change: transform, width, height;
 }
 
 .item__img-wrap {
@@ -180,103 +177,106 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .8s var(--ease-expo), filter .6s ease;
-  filter: brightness(.8);
+  transition: transform .9s var(--ease-expo), filter .6s ease;
+  filter: brightness(.75);
   transform-origin: center;
 }
 
-.item:hover .item__img-wrap img {
-  filter: brightness(.95);
+.item:hover:not(.is-expanded) .item__img-wrap img {
+  filter: brightness(.9);
   transform: scale(1.04);
 }
 
-/* ─── CORNER MARKERS — hidden by default ───────────── */
+/* ─── CORNER MARKERS ───────────────────────────────── */
 .item__corner {
   position: absolute;
   z-index: 3;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 200;
   color: var(--white);
   line-height: 1;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .5s ease;
+  transition: opacity .6s ease;
 }
 
-.item__corner--tl { top: 1.2rem;  left: 1.5rem; }
-.item__corner--tr { top: 1.2rem;  right: 1.5rem; }
-.item__corner--bl { bottom: 1.2rem; left: 1.5rem; }
-.item__corner--br { bottom: 1.2rem; right: 1.5rem; }
+.item__corner--tl { top: 1.5rem;  left: 2rem; }
+.item__corner--tr { top: 1.5rem;  right: 2rem; }
+.item__corner--bl { bottom: 1.5rem; left: 2rem; }
+.item__corner--br { bottom: 1.5rem; right: 2rem; }
 
-/* ─── TITLE — hidden by default ────────────────────── */
+/* ─── TITLE ────────────────────────────────────────── */
 .item__title {
   position: absolute;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  font-size: clamp(1.4rem, 3vw, 2.6rem);
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--white);
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .5s ease .2s;
+  transition: opacity .5s ease .15s;
   text-align: center;
 }
 
-/* ─── ITEM EXPANDED STATE ──────────────────────────── */
+/* ─── EXPANDED STATE ───────────────────────────────── */
 .item.is-expanded {
-  width: 100vw;
-  height: 100vh;
-  border-radius: 0;
-  position: fixed;
-  inset: 0;
-  z-index: 300;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+  z-index: 400;
   cursor: default;
 }
 
 .item.is-expanded .item__img-wrap img {
-  filter: brightness(.75);
-  transform: scale(1);
+  filter: brightness(.65);
+  transform: scale(1) !important;
 }
 
-.item.is-expanded .item__corner {
-  opacity: .8;
-}
+.item.is-expanded .item__corner { opacity: .7; }
+.item.is-expanded .item__title  { opacity: 1; }
 
-.item.is-expanded .item__title {
-  opacity: 1;
+/* ─── DIMMED STATE ─────────────────────────────────── */
+.item.is-dimmed {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 /* ─── COUNTER ──────────────────────────────────────── */
 #counter {
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: .8rem;
+  font-size: .78rem;
   letter-spacing: .12em;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,.5);
   display: flex;
-  gap: .4rem;
+  gap: .35rem;
   pointer-events: none;
-  z-index: 400;
+  z-index: 500;
+  opacity: 0;
 }
 
 .counter__sep { opacity: .4; }
 
-/* ─── THUMBNAILS — hidden until expand ─────────────── */
+/* ─── THUMBNAILS ───────────────────────────────────── */
 #thumbs {
-  position: absolute;
+  position: fixed;
   bottom: 1.2rem;
   right: 1.5rem;
   display: flex;
-  gap: 5px;
-  z-index: 400;
+  gap: 4px;
+  z-index: 500;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   pointer-events: none;
   transition: opacity .5s ease, transform .5s var(--ease-expo);
 }
@@ -288,13 +288,14 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
 }
 
 .thumb {
-  width: 52px;
-  height: 36px;
+  width: 48px;
+  height: 32px;
   overflow: hidden;
-  opacity: .45;
+  opacity: .4;
   cursor: pointer;
   transition: opacity .3s ease, transform .3s var(--ease-expo);
   flex-shrink: 0;
+  border-radius: 1px;
 }
 
 .thumb img {
@@ -304,13 +305,7 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
 }
 
 .thumb:hover  { opacity: .75; transform: translateY(-3px); }
-.thumb.active { opacity: 1;   transform: translateY(-3px); }
-
-/* ─── SCROLL HINT — dims other items when one expanded */
-.item.is-dimmed {
-  opacity: 0;
-  pointer-events: none;
-}
+.thumb.active { opacity: 1;   transform: translateY(-4px); }
 
 /* ─── PAGE TRANSITION ──────────────────────────────── */
 #page-transition {
@@ -330,27 +325,24 @@ body:has(button:hover) #cursor__ring { width: 80px; height: 80px; opacity: .8; }
   width: 100%; height: 100%;
   z-index: 9998;
   pointer-events: none;
-  opacity: .03;
+  opacity: .028;
   mix-blend-mode: screen;
 }
 
-/* ─── SELECTION ────────────────────────────────────── */
+/* ─── SELECTION / SCROLLBAR ────────────────────────── */
 ::selection { background: var(--white); color: var(--black); }
-
-/* ─── SCROLLBAR ────────────────────────────────────── */
-::-webkit-scrollbar { width: 2px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: #444; }
+::-webkit-scrollbar { display: none; }
 
 /* ─── MOBILE ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  :root { --item-w: 180px; --item-h: 260px; }
+  :root { --item-w: 160px; --item-h: 220px; }
   #cursor { display: none; }
   html { cursor: auto; }
-  .item__title { font-size: 1.1rem; white-space: normal; width: 80%; text-align: center; }
+  .item__title { font-size: 1rem; white-space: normal; width: 80%; text-align: center; }
+  #thumbs { right: .5rem; }
+  .thumb { width: 36px; height: 24px; }
 }
 
-/* ─── REDUCED MOTION ───────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;

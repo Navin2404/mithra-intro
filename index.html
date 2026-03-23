@@ -25,127 +25,122 @@
     </div>
 
     <nav id="nav">
-      <div class="nav__links">
-        <a href="#" class="nav__link nav__link--active">Work</a>
-        <a href="/about.html" class="nav__link" data-link>About</a>
-      </div>
+      <a href="#" class="nav__link nav__link--active">Work</a>
+      <a href="/about.html" class="nav__link" data-link>About</a>
     </nav>
 
-    <!-- Scroll container — height drives horizontal travel -->
-    <div id="scroll-container">
-      <div id="sticky-wrap">
+    <!-- Fixed stage — no scrolling, JS drives everything -->
+    <div id="stage">
+      <div id="strip">
 
-        <!-- Strip of images -->
-        <div id="strip">
-          <div class="item" data-index="0" data-title="Project Title One">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-01.jpg" alt="Project Title One" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title One</div>
+        <div class="item" data-index="0" data-title="Project Title One">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-01.jpg" alt="Project Title One" />
           </div>
-
-          <div class="item" data-index="1" data-title="Project Title Two">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-02.jpg" alt="Project Title Two" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Two</div>
-          </div>
-
-          <div class="item" data-index="2" data-title="Project Title Three">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-03.jpg" alt="Project Title Three" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Three</div>
-          </div>
-
-          <div class="item" data-index="3" data-title="Project Title Four">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-04.jpg" alt="Project Title Four" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Four</div>
-          </div>
-
-          <div class="item" data-index="4" data-title="Project Title Five">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-05.jpg" alt="Project Title Five" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Five</div>
-          </div>
-
-          <div class="item" data-index="5" data-title="Project Title Six">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-06.jpg" alt="Project Title Six" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Six</div>
-          </div>
-
-          <div class="item" data-index="6" data-title="Project Title Seven">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-07.jpg" alt="Project Title Seven" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Seven</div>
-          </div>
-
-          <div class="item" data-index="7" data-title="Project Title Eight">
-            <div class="item__img-wrap">
-              <img src="/assets/images/project-08.jpg" alt="Project Title Eight" />
-            </div>
-            <div class="item__corner item__corner--tl">+</div>
-            <div class="item__corner item__corner--tr">+</div>
-            <div class="item__corner item__corner--bl">+</div>
-            <div class="item__corner item__corner--br">+</div>
-            <div class="item__title">Project Title Eight</div>
-          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title One</div>
         </div>
 
-        <!-- Bottom center counter -->
-        <div id="counter">
-          <span id="counter__cur">1</span>
-          <span class="counter__sep">—</span>
-          <span id="counter__tot">8</span>
+        <div class="item" data-index="1" data-title="Project Title Two">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-02.jpg" alt="Project Title Two" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Two</div>
         </div>
 
-        <!-- Bottom right thumbnails — hidden until expand -->
-        <div id="thumbs">
-          <div class="thumb active" data-index="0"><img src="/assets/images/project-01.jpg" /></div>
-          <div class="thumb" data-index="1"><img src="/assets/images/project-02.jpg" /></div>
-          <div class="thumb" data-index="2"><img src="/assets/images/project-03.jpg" /></div>
-          <div class="thumb" data-index="3"><img src="/assets/images/project-04.jpg" /></div>
-          <div class="thumb" data-index="4"><img src="/assets/images/project-05.jpg" /></div>
-          <div class="thumb" data-index="5"><img src="/assets/images/project-06.jpg" /></div>
-          <div class="thumb" data-index="6"><img src="/assets/images/project-07.jpg" /></div>
-          <div class="thumb" data-index="7"><img src="/assets/images/project-08.jpg" /></div>
+        <div class="item" data-index="2" data-title="Project Title Three">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-03.jpg" alt="Project Title Three" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Three</div>
+        </div>
+
+        <div class="item" data-index="3" data-title="Project Title Four">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-04.jpg" alt="Project Title Four" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Four</div>
+        </div>
+
+        <div class="item" data-index="4" data-title="Project Title Five">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-05.jpg" alt="Project Title Five" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Five</div>
+        </div>
+
+        <div class="item" data-index="5" data-title="Project Title Six">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-06.jpg" alt="Project Title Six" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Six</div>
+        </div>
+
+        <div class="item" data-index="6" data-title="Project Title Seven">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-07.jpg" alt="Project Title Seven" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Seven</div>
+        </div>
+
+        <div class="item" data-index="7" data-title="Project Title Eight">
+          <div class="item__img-wrap">
+            <img src="/assets/images/project-08.jpg" alt="Project Title Eight" />
+          </div>
+          <div class="item__corner item__corner--tl">+</div>
+          <div class="item__corner item__corner--tr">+</div>
+          <div class="item__corner item__corner--bl">+</div>
+          <div class="item__corner item__corner--br">+</div>
+          <div class="item__title">Project Title Eight</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- Counter -->
+    <div id="counter">
+      <span id="counter__cur">1</span>
+      <span class="counter__sep">—</span>
+      <span id="counter__tot">8</span>
+    </div>
+
+    <!-- Thumbnails (shown when expanded) -->
+    <div id="thumbs">
+      <div class="thumb active" data-index="0"><img src="/assets/images/project-01.jpg" /></div>
+      <div class="thumb" data-index="1"><img src="/assets/images/project-02.jpg" /></div>
+      <div class="thumb" data-index="2"><img src="/assets/images/project-03.jpg" /></div>
+      <div class="thumb" data-index="3"><img src="/assets/images/project-04.jpg" /></div>
+      <div class="thumb" data-index="4"><img src="/assets/images/project-05.jpg" /></div>
+      <div class="thumb" data-index="5"><img src="/assets/images/project-06.jpg" /></div>
+      <div class="thumb" data-index="6"><img src="/assets/images/project-07.jpg" /></div>
+      <div class="thumb" data-index="7"><img src="/assets/images/project-08.jpg" /></div>
     </div>
 
     <script type="module" src="./src/js/main.js"></script>
